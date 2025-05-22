@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <cstring>
 #include <cstdint>
 #include <span>
 
@@ -75,7 +76,7 @@ namespace console::cli {
 
 			add_to_buffer(character);
 
-			if (sc_escape_sequence_max_buffer_size == m_buffer_position) {
+			if (config::sc_max_escape_sequence_length == m_buffer_position) {
 
 				m_last_input_type = ButtonType::kNotDefined;
 			}
@@ -122,7 +123,7 @@ namespace console::cli {
 
 		void add_to_buffer(std::uint8_t character) {
 
-			if (m_buffer_position >= sc_escape_sequence_max_buffer_size) {
+			if (m_buffer_position >= config::sc_max_escape_sequence_length) {
 				m_buffer_position = 0;
 			}
 			m_buffer[m_buffer_position++] = character;
@@ -135,10 +136,8 @@ namespace console::cli {
 			m_buffer.fill(0);
 		}
 
-		static constexpr std::size_t sc_escape_sequence_max_buffer_size = 6;
-
 		ButtonType m_last_input_type{ButtonType::kNotDefined};
 		std::size_t m_buffer_position{0};
-		std::array<char, sc_escape_sequence_max_buffer_size> m_buffer{};
+		std::array<char, config::sc_max_escape_sequence_length> m_buffer{};
 	};
 } // namespace console::cli
