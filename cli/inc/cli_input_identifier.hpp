@@ -1,8 +1,8 @@
 #pragma once
 
 #include <cstddef>
-#include <cstring>
 #include <cstdint>
+#include <cstring>
 #include <span>
 
 #include "character_encodings/utf_8.hpp"
@@ -15,10 +15,10 @@ namespace console::cli {
 	 * @brief Class to handle input from the command line interface.
 	 * It identifies the type of input received and handles escape sequences.
 	 */
-	class CLIInputHandler {
+	class CliInputIdentifier {
 
 	public:
-		CLIInputHandler() {
+		CliInputIdentifier() {
 
 			reset();
 		}

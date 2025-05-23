@@ -2,12 +2,11 @@
 
 #include "character_encodings/utf_8.hpp"
 #include "cli_buffer_manager.hpp"
-#include "cli_input_handler.hpp"
+#include "cli_input_identifier.hpp"
 
 namespace console::cli {
 
-	enum class CLIStatus
-	{
+	enum class CLIStatus {
 		kMessageReady = 0,
 		kMessageNotReady,
 	};
@@ -61,7 +60,7 @@ namespace console::cli {
 		}
 
 	private:
-		CLIInputHandler m_input_handler;
+		CliInputIdentifier m_input_handler;
 		CliBufferManager m_buffer_manager;
 		ButtonType m_input_type{ButtonType::kNotDefined};
 	};
